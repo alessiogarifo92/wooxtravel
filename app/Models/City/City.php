@@ -11,7 +11,7 @@ class City extends Model
 
     protected $table = 'cities';
 
-    protected $fillables = [
+    protected $fillable = [
         "name",
         "image",
         "price",

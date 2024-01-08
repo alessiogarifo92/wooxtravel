@@ -5,19 +5,73 @@ namespace App\Http\Controllers\Traveling;
 use App\Http\Controllers\Controller;
 use App\Models\City\City;
 use App\Models\Country\Country;
+use App\Models\Reservation\Reservation;
 use Illuminate\Http\Request;
+use Auth;
+use Session;
+
 
 class TravelingController extends Controller
 {
-    public function about($id){
+    public function about($id)
+    {
 
         $countryInfo = Country::find($id);
 
-        $cities = City::select()->orderBy('id','desc')->take(5)->where('country_id',$id)->get();
+        $cities = City::select()->orderBy('id', 'desc')->take(5)->where('country_id', $id)->get();
 
-        $citiesCount = City::select()->where('country_id',$id)->count();
+        $citiesCount = City::select()->where('country_id', $id)->count();
 
-        return view('traveling.about', compact('countryInfo','cities','citiesCount'));
+        return view('traveling.about', compact('countryInfo', 'cities', 'citiesCount'));
+
+    }
+
+
+    public function makeReservation($id)
+    {
+
+        $city = City::find($id);
+
+        return view('traveling.reservation', compact('city'));
+
+    }
+
+    public function storeReservation(Request $request, $id)
+    {
+
+        $city = City::find($id);
+
+        //check if date insert is in the future
+        if ($request->check_in_date > date("Y-m-d")) {
+
+            $totalPrice = (int)$city->price * (int)$request->num_guests;
+
+            $storeReservation = Reservation::create([
+                "name" => $request->name,
+                "phone_number" => $request->phone_number,
+                "num_guests" => $request->num_guests,
+                "check_in_date" => $request->check_in_date,
+                "destination" => $request->destination,
+                "price" => $totalPrice,
+                "user_id" => Auth::user()->id
+            ]);
+
+            if ($storeReservation) {
+
+                $price = Session::put('price', $totalPrice);
+
+                $finalPrice = Session::get('$price');
+
+                return redirect()->route('traveling.reservation', $id)->with(['success' => 'Congratulation! You\'ve booked your next trip successfully!']);
+            }
+        } else{
+            return view('traveling.reservation', compact('city'))->with(['date' => 'Date Error: insert a date in the future!']);
+
+        }
+
+
+        return view('traveling.reservation', compact('city'))->with(['error' => 'Reservation error: try again!']);
+
 
     }
 }
