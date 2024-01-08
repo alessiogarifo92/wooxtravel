@@ -11,12 +11,12 @@
             <div class="slider">
                 @foreach ($countries as $country)
                     
-                <div id="top-banner-{{$country->id}}" class="banner" style="background">
+                <div id="top-banner-{{$country->id}}" class="banner" style="background-image:url('{{asset('assets/images/' . $country->image)}}')">
                     <div class="banner-inner-wrapper header-text">
                         <div class="main-caption">
                             <h2>Take a Glimpse Into The Beautiful Country Of:</h2>
                             <h1>{{$country->name}}</h1>
-                            <div class="border-button"><a href="about.html">Go There</a></div>
+                            <div class="border-button"><a href="{{route('traveling.about', $country->id)}}">Go There</a></div>
                         </div>
                         <div class="container">
                             <div class="row">
@@ -37,7 +37,7 @@
                                             </div>
                                             <div class="col-lg-3 col-sm-6 col-6">
                                                 <div class="main-button">
-                                                    <a href="about.html">Explore More</a>
+                                                    <a href="{{route('traveling.about', $country->id)}}">Explore More</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -92,7 +92,7 @@
                                                 <h4>{{$country->name}}</h4>
                                                 <span>{{$country->continent}}</span>
                                                 <div class="main-button">
-                                                    <a href="about.html">Explore More</a>
+                                                    <a href="{{route('traveling.about', $country->id)}}">Explore More</a>
                                                 </div>
                                                 <p>{{$country->description}}</p>
                                                 <ul class="info">
