@@ -2,12 +2,14 @@
 
 @section('content')
     <!-- ***** Main Banner Area Start ***** -->
-    <div class="about-main-content" style="margin-top: -25px; background-image: url('{{asset('assets/images/' . $countryInfo->image)}}')">
+    <div class="about-main-content"
+        style="margin-top: -25px; background-image: url('{{ asset('assets/images/' . $countryInfo->image) }}')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="content">
-                        <div class="blur-bg" style="background-image: url('{{asset('assets/images/' . $countryInfo->image)}}')"></div>
+                        <div class="blur-bg"
+                            style="background-image: url('{{ asset('assets/images/' . $countryInfo->image) }}')"></div>
                         <h4>EXPLORE OUR COUNTRY</h4>
                         <div class="line-dec"></div>
                         <h2>Welcome To {{ $countryInfo->name }}</h2>
@@ -34,7 +36,7 @@
                                 @foreach ($cities as $city)
                                     <div class="item">
                                         <div class="thumb">
-                                            <img src="{{asset('assets/images/' . $city->image)}}" alt="">
+                                            <img src="{{ asset('assets/images/' . $city->image) }}" alt="">
                                             <h4>{{ $city->name }}</h4>
                                         </div>
                                     </div>
@@ -66,7 +68,7 @@
                         @foreach ($cities as $city)
                             <div class="item">
                                 <div class="thumb">
-                                    <img src="{{asset('assets/images/' . $city->image)}}" alt="">
+                                    <img src="{{ asset('assets/images/' . $city->image) }}" alt="">
                                     <div class="text">
                                         <h4>{{ $city->name }}<br><span><i class="fa fa-users"></i> 234 Check Ins</span>
                                         </h4>
@@ -79,9 +81,13 @@
                                             <li><i class="fa fa-plane"></i> Airplane Bill Included</li>
                                             <li><i class="fa fa-building"></i> Daily Places Visit</li>
                                         </ul>
-                                        <div class="main-button">
-                                            <a href="{{route('traveling.reservation', $city->id)}}">Make a Reservation</a>
-                                        </div>
+                                        @auth
+
+                                            <div class="main-button">
+                                                <a href="{{ route('traveling.reservation', $city->id) }}">Make a
+                                                    Reservation</a>
+                                            </div>
+                                        @endauth
                                     </div>
                                 </div>
                             </div>
@@ -97,7 +103,7 @@
             <div class="row">
                 <div class="col-lg-6 align-self-center">
                     <div class="left-image">
-                        <img src="{{asset('assets/images/about-left-image.jpg')}}" alt="">
+                        <img src="{{ asset('assets/images/about-left-image.jpg') }}" alt="">
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -112,7 +118,7 @@
                             <div class="info-item">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <h4>{{$citiesCount}}+</h4>
+                                        <h4>{{ $citiesCount }}+</h4>
                                         <span>Amazing Places</span>
                                     </div>
                                     <div class="col-lg-6">

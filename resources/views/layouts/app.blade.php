@@ -31,7 +31,7 @@
 
 <body>
     <div id="app">
-    
+
         <!-- ***** Header Area Start ***** -->
         <header class="header-area header-sticky">
             <div class="container">
@@ -45,9 +45,8 @@
                             <!-- ***** Logo End ***** -->
                             <!-- ***** Menu Start ***** -->
                             <ul class="nav">
-                                <li><a href="{{route('home')}}" class="active">Home</a></li>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="{{route('traveling.deals')}}">Deals</a></li>
+                                <li><a href="{{ route('home') }}" class="active">Home</a></li>
+                                <li><a href="{{ route('traveling.deals') }}">Deals</a></li>
 
                                 @guest
                                     @if (Route::has('login'))
@@ -59,6 +58,7 @@
                                     @endif
                                 @else
                                     <li class="nav-item dropdown">
+
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
                                             role="button" data-bs-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false" v-pre>
@@ -66,6 +66,9 @@
                                         </a>
 
                                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item text-black"
+                                                href="{{ route('traveling.myBookings') }}">My
+                                                Bookings</a>
                                             <a class="dropdown-item text-black" href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
