@@ -98,5 +98,34 @@ class TravelingController extends Controller
         return view('traveling.paySuccess');
 
     }
+
+
+    //deals methods
+    public function deals()
+    {
+
+        $cities = City::select()->orderBy('id', 'desc')->take(4)->get();
+
+        $countries = Country::all();
+
+        return view('traveling.deals', compact('cities', 'countries'));
+
+    }
+
+
+    public function searchDeals(Request $request)
+    {
+
+        $country_id = $request->get('country_id');
+        $price = $request->get('price');
+
+        $searches = City::where('country_id', $country_id)->where('price', '<=', $price)->orderBy('id', 'desc')->take(4)->get();
+
+        $countries = Country::all();
+
+
+        return view('traveling.searchdeals', compact('searches', 'countries'));
+
+    }
 }
 

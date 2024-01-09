@@ -30,3 +30,8 @@ Route::post('/traveling/reservation/{id}', [App\Http\Controllers\Traveling\Trave
 //paypal payment with middleware validation
 Route::get('/traveling/pay', [App\Http\Controllers\Traveling\TravelingController::class, 'payWithPaypal'])->name('traveling.pay')->middleware('check.for.price');
 Route::get('/traveling/pay/success', [App\Http\Controllers\Traveling\TravelingController::class, 'paySuccess'])->name('traveling.pay.success')->middleware('check.for.price');
+
+
+//deals
+Route::get('/traveling/deals', [App\Http\Controllers\Traveling\TravelingController::class, 'deals'])->name('traveling.deals');
+Route::any('/traveling/search/deals', [App\Http\Controllers\Traveling\TravelingController::class, 'searchDeals'])->name('traveling.deals.search');
