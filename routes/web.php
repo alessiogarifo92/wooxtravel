@@ -26,3 +26,7 @@ Route::get('/traveling/about/{id}', [App\Http\Controllers\Traveling\TravelingCon
 //reservations
 Route::get('/traveling/reservation/{id}', [App\Http\Controllers\Traveling\TravelingController::class, 'makeReservation'])->name('traveling.reservation');
 Route::post('/traveling/reservation/{id}', [App\Http\Controllers\Traveling\TravelingController::class, 'storeReservation'])->name('traveling.reservation.store');
+
+//paypal payment with middleware validation
+Route::get('/traveling/pay', [App\Http\Controllers\Traveling\TravelingController::class, 'payWithPaypal'])->name('traveling.pay')->middleware('check.for.price');
+Route::get('/traveling/pay/success', [App\Http\Controllers\Traveling\TravelingController::class, 'paySuccess'])->name('traveling.pay.success')->middleware('check.for.price');

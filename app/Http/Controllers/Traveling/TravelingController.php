@@ -9,6 +9,7 @@ use App\Models\Reservation\Reservation;
 use Illuminate\Http\Request;
 use Auth;
 use Session;
+use DB;
 
 
 class TravelingController extends Controller
@@ -26,7 +27,7 @@ class TravelingController extends Controller
 
     }
 
-
+    //reservation methods
     public function makeReservation($id)
     {
 
@@ -44,7 +45,7 @@ class TravelingController extends Controller
         //check if date insert is in the future
         if ($request->check_in_date > date("Y-m-d")) {
 
-            $totalPrice = (int)$city->price * (int)$request->num_guests;
+            $totalPrice = (int) $city->price * (int) $request->num_guests;
 
             $storeReservation = Reservation::create([
                 "name" => $request->name,
@@ -62,9 +63,9 @@ class TravelingController extends Controller
 
                 $finalPrice = Session::get('$price');
 
-                return redirect()->route('traveling.reservation', $id)->with(['success' => 'Congratulation! You\'ve booked your next trip successfully!']);
+                return redirect()->route('traveling.pay');
             }
-        } else{
+        } else {
             return view('traveling.reservation', compact('city'))->with(['date' => 'Date Error: insert a date in the future!']);
 
         }
@@ -74,4 +75,28 @@ class TravelingController extends Controller
 
 
     }
+
+    //payment methods
+    public function payWithPaypal()
+    {
+
+
+        return view('traveling.pay');
+
+    }
+
+    public function paySuccess()
+    {
+
+        //find last id insert in reservation from auth user and change reservation status to "Payed"
+        $id = Reservation::where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->first()->id;
+        Reservation::where('id', $id)->update(['status' => 'Payed']);
+
+        //remove price amount from session
+        Session::forget('price');
+
+        return view('traveling.paySuccess');
+
+    }
 }
+

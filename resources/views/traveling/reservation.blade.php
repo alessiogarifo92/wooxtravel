@@ -44,9 +44,9 @@
     </div>
 
     <div class="reservation-form">
-        @if (Session::has('success'))
+        {{-- @if (Session::has('success'))
             <p class="alert {{ Session::get('alert-class', 'alert-success') }}"> {{ Session::get('success') }}</p>
-        @endif
+        @endif --}}
         <div class="container">
             <div class="row">
 
