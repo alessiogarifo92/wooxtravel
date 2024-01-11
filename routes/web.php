@@ -38,3 +38,13 @@ Route::any('/search/deals', [App\Http\Controllers\Traveling\TravelingController:
 });
 
 Route::get('/user/myBookings', [App\Http\Controllers\Users\UsersController::class, 'myBookings'])->name('traveling.myBookings');
+
+
+//Admins
+Route::get('/admin/login', [App\Http\Controllers\Admins\AdminsController::class, 'viewLogin'])->name('admin.viewLogin')->middleware('check.for.auth');
+Route::post('/admin/login', [App\Http\Controllers\Admins\AdminsController::class, 'checkLogin'])->name('admin.checkLogin');
+
+Route::prefix('admin')->middleware('auth:admin')->group(function () {
+Route::get('/index', [App\Http\Controllers\Admins\AdminsController::class, 'index'])->name('admin.index');
+Route::get('/logout', [App\Http\Controllers\Admins\AdminsController::class, 'adminLogout'])->name('admin.logout');
+});
