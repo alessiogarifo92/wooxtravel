@@ -31,7 +31,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="admins/admins.html" style="margin-left: 20px;">Admins</a>
+                                <a class="nav-link" href="{{route('admin.all.admins')}}" style="margin-left: 20px;">Admins</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="countries-admins/show-country.html"

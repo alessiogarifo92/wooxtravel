@@ -8,6 +8,9 @@ use App\Models\City\City;
 use App\Models\Country\Country;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+
 
 class AdminsController extends Controller
 {
@@ -34,13 +37,61 @@ class AdminsController extends Controller
     public function index()
     {
 
-        $countries = Country::select()->count(); 
+        $countries = Country::select()->count();
 
         $cities = City::select()->count();
 
         $admins = Admin::select()->count();
 
         return view('admins.index', compact('countries', 'cities', 'admins'));
+
+    }
+
+    public function allAdmins()
+    {
+
+        $admins = Admin::all();
+
+        return view('admins.allAdmins', compact('admins'));
+
+    }
+
+    public function registerAdmin()
+    {
+
+        return view('admins.registerAdmin');
+
+    }
+
+    public function storeAdmin(Request $request)
+    {
+
+        $validationInput = Request()->validate([
+            'name' => 'required|max:200|unique:admins,name',
+            'email' => 'required|max:200|unique:admins,email',
+            'password' => 'required|min:8'
+        ]);
+        
+
+        if ($validationInput) {
+
+            $storeAdmin = Admin::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->name),
+            ]);
+
+            if ($storeAdmin) {
+
+                return redirect()->route('admin.all.admins')->with(['success' => 'New admin added successfully!']);
+
+            }
+        }
+
+
+        return redirect()->route('admin.all.admins')->with(['error' => 'Error: creation new admin failed. Try again...']);
+
+
 
     }
 

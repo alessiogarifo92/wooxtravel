@@ -45,6 +45,11 @@ Route::get('/admin/login', [App\Http\Controllers\Admins\AdminsController::class,
 Route::post('/admin/login', [App\Http\Controllers\Admins\AdminsController::class, 'checkLogin'])->name('admin.checkLogin');
 
 Route::prefix('admin')->middleware('auth:admin')->group(function () {
-Route::get('/index', [App\Http\Controllers\Admins\AdminsController::class, 'index'])->name('admin.index');
-Route::get('/logout', [App\Http\Controllers\Admins\AdminsController::class, 'adminLogout'])->name('admin.logout');
+    Route::get('/logout', [App\Http\Controllers\Admins\AdminsController::class, 'adminLogout'])->name('admin.logout');
+    Route::get('/index', [App\Http\Controllers\Admins\AdminsController::class, 'index'])->name('admin.index');
+   
+    //all admins section
+    Route::get('/all-admins', [App\Http\Controllers\Admins\AdminsController::class, 'allAdmins'])->name('admin.all.admins');
+    Route::get('/all-admins/register', [App\Http\Controllers\Admins\AdminsController::class, 'registerAdmin'])->name('admin.register.admin');
+    Route::post('/all-admins/register', [App\Http\Controllers\Admins\AdminsController::class, 'storeAdmin'])->name('admin.store.admin');
 });
