@@ -34,15 +34,15 @@
                                 <a class="nav-link" href="{{route('admin.all.admins')}}" style="margin-left: 20px;">Admins</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="countries-admins/show-country.html"
+                                <a class="nav-link" href="{{route('admin.all.countries')}}"
                                     style="margin-left: 20px;">Countries</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="cities-admins/show-cities.html"
+                                <a class="nav-link" href="{{route('admin.all.cities')}}"
                                     style="margin-left: 20px;">Cities</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="bookings-admins/show-bookings.html"
+                                <a class="nav-link" href="{{route('admin.all.bookings')}}"
                                     style="margin-left: 20px;">Bookings</a>
                             </li>
                         </ul>
