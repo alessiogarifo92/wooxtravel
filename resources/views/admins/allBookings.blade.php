@@ -6,7 +6,9 @@
             @if (Session::has('success'))
                 <p class="alert alert-success">{{ Session::get('success') }}</p>
             @elseif (Session::has('error'))
-                <p class="alert alert-alert">{{ Session::get('error') }}</p>
+                <p class="alert alert-danger">{{ Session::get('error') }}</p>
+            @elseif (Session::has('update'))
+                <p class="alert alert-success">{{ Session::get('update') }}</p>
             @endif
             <div class="card">
                 <div class="card-body">
@@ -37,12 +39,14 @@
                                     <td>{{ $booking->destination }}</td>
                                     <td>${{ $booking->price }}</td>
                                     @if ($booking->status == 'Payed')
-                                        <td class="table-success">{{ $booking->status }}</td>
+                                        <td class="table-success text-center">{{ $booking->status }}</td>
                                     @else
-                                        <td class="table-danger">{{ $booking->status }}</td>
+                                        <td class="table-danger text-center">{{ $booking->status }}</td>
                                     @endif
+                                    <td><a href="{{ route('admin.edit.bookings', $booking->id) }}"
+                                            class="btn btn-warning text-center">change status</a></td>
                                     <td><a href="{{ route('admin.delete.booking', $booking->id) }}"
-                                            class="btn btn-danger  text-center ">delete</a></td>
+                                            class="btn btn-danger text-center">delete</a></td>
                             @endforeach
                             </tr>
                         </tbody>

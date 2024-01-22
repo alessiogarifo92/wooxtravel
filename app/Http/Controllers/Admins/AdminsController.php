@@ -289,6 +289,28 @@ class AdminsController extends Controller
 
     }
 
+    public function editBookings($id)
+    {
+
+        $booking = Reservation::find($id);
+
+        return view('admins.editBooking', compact('booking'));
+
+    }
+
+    public function updateBookings(Request $request, $id)
+    {
+
+        $booking = Reservation::find($id);
+
+        $booking->update($request->all());
+
+        if ($booking) {
+
+            return redirect()->route('admin.all.bookings')->with(['update' => 'Booking status updated successfully']);
+        }
+    }
+
     public function deleteBooking($id)
     {
 

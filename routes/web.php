@@ -67,5 +67,7 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
     
     //bookings section
     Route::get('/all-bookings', [App\Http\Controllers\Admins\AdminsController::class, 'allBookings'])->name('admin.all.bookings');
+    Route::get('/edit-booking/{id}', [App\Http\Controllers\Admins\AdminsController::class, 'editBookings'])->name('admin.edit.bookings');
+    Route::post('/update-booking/{id}', [App\Http\Controllers\Admins\AdminsController::class, 'updateBookings'])->name('admin.update.bookings');
     Route::get('/booking/delete/{id}', [App\Http\Controllers\Admins\AdminsController::class, 'deleteBooking'])->name('admin.delete.booking');
 });

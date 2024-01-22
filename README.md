@@ -29,8 +29,6 @@ N.B Make a paypal payment trought paypal developer dashboad or use other payment
 
 ![image](https://github.com/alessiogarifo92/wooxtravel/assets/71635987/10d573fe-34d8-45d3-a50e-87c715fb5895)
 
-![image](https://github.com/alessiogarifo92/wooxtravel/assets/71635987/9d4d6284-985a-4c88-b671-b3ac78b889a0)
-
 
 
 
