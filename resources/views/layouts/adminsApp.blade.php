@@ -16,7 +16,9 @@
     <div id="wrapper">
         <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="{{route('admin.all.admins')}}">LOGO</a>
+                <a href="{{ url('/') }}" class="logo">
+                    <img src="{{ asset('assets/images/logo.png') }}" alt="">
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
                     aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -26,18 +28,19 @@
                     @auth('admin')
                         <ul class="navbar-nav side-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('admin.all.admins')}}" style="margin-left: 20px;">Admins</a>
+                                <a class="nav-link" href="{{ route('admin.all.admins') }}"
+                                    style="margin-left: 20px;">Admins</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('admin.all.countries')}}"
+                                <a class="nav-link" href="{{ route('admin.all.countries') }}"
                                     style="margin-left: 20px;">Countries</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('admin.all.cities')}}"
+                                <a class="nav-link" href="{{ route('admin.all.cities') }}"
                                     style="margin-left: 20px;">Cities</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('admin.all.bookings')}}"
+                                <a class="nav-link" href="{{ route('admin.all.bookings') }}"
                                     style="margin-left: 20px;">Bookings</a>
                             </li>
                         </ul>
@@ -47,7 +50,7 @@
 
                         @auth('admin')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('admin.index')}}">Home
+                                <a class="nav-link" href="{{ route('admin.index') }}">Home
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
