@@ -17,6 +17,13 @@
 # Register page
 ![image](https://github.com/alessiogarifo92/wooxtravel/assets/71635987/9e44c458-6a42-4683-8e1b-a5e35207d769)
 
+# Make a Reservation and Pay!
+![image](https://github.com/alessiogarifo92/wooxtravel/assets/71635987/f924d3e7-01b0-4217-b0a9-96fcbe83106d)
+
+![image](https://github.com/alessiogarifo92/wooxtravel/assets/71635987/c0279fea-816c-40a7-bfe1-e6cbc25ffd67)
+N.B Make a paypal payment trought paypal developer dashboad or use other payment methods
+
+
 # Admin Panel
 ![image](https://github.com/alessiogarifo92/wooxtravel/assets/71635987/43ead32b-c0f1-4186-9aee-7332db9fb2a3)
 
