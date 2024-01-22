@@ -16,7 +16,7 @@
     <div id="wrapper">
         <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="#">LOGO</a>
+                <a class="navbar-brand" href="{{route('admin.all.admins')}}">LOGO</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
                     aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -25,11 +25,6 @@
                 <div class="collapse navbar-collapse" id="navbarText">
                     @auth('admin')
                         <ul class="navbar-nav side-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" style="margin-left: 20px;" href="index.html">Home
-                                    <span class="sr-only">(current)</span>
-                                </a>
-                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('admin.all.admins')}}" style="margin-left: 20px;">Admins</a>
                             </li>
@@ -52,7 +47,7 @@
 
                         @auth('admin')
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html">Home
+                                <a class="nav-link" href="{{route('admin.index')}}">Home
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>

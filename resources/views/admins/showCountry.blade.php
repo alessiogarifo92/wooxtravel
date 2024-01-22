@@ -32,7 +32,7 @@
                                     <td>{{ $country->continent }}</td>
                                     <td>{{ $country->population }}</td>
                                     <td>{{ $country->territory }}</td>
-                                    <td><a href="{{route('admin.delete.country', $country->id)}}" class="btn btn-danger  text-center ">Delete</a></td>
+                                    <td><a href="{{route('admin.delete.country', $country->id)}}" class="btn btn-danger  text-center ">delete</a></td>
                                 </tr>
                             @endforeach
                         </tbody>
