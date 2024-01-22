@@ -25,6 +25,7 @@
                                 <th scope="col">destination</th>
                                 <th scope="col">status</th>
                                 <th scope="col">price</th>
+                                <th scope="col">change status</th>
                                 <th scope="col">delete</th>
                             </tr>
                         </thead>
